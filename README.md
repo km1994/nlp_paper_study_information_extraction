@@ -32,6 +32,7 @@
     - [NLP 学习篇](#nlp-学习篇)
       - [理论学习篇](#理论学习篇)
         - [【关于 信息抽取】 那些的你不知道的事](#关于-信息抽取-那些的你不知道的事)
+          - [【关于 通用信息抽取】 那些的你不知道的事](#关于-通用信息抽取-那些的你不知道的事)
           - [【关于 实体关系联合抽取】 那些的你不知道的事](#关于-实体关系联合抽取-那些的你不知道的事)
           - [【关于 命名实体识别】那些你不知道的事](#关于-命名实体识别那些你不知道的事)
           - [【关于 关系抽取】那些你不知道的事](#关于-关系抽取那些你不知道的事)
@@ -48,6 +49,20 @@
 #### 理论学习篇
 
 ##### [【关于 信息抽取】 那些的你不知道的事](https://github.com/km1994/nlp_paper_study_information_extraction/tree/master/information_extraction/)
+
+###### [【关于 通用信息抽取】 那些的你不知道的事](https://github.com/km1994/nlp_paper_study_information_extraction/tree/master/information_extraction/all_extraction/)
+
+- [【关于 UIE 】 那些你不知道的事](https://github.com/km1994/nlp_paper_study_information_extraction/tree/master/information_extraction/all_extraction/UIE/) 
+  - 研究动机
+    - 不同的输出结构使得很难对所有信息抽取任务统一化建模，这样就产生了三个问题：
+
+      - 由于不同的任务、不同的设置（全监督、低资源、少样本、零样本）、不同的作用场景（医学、金融等），研究人员需要设计大量针对特定情况的模型，这是一件极其耗费资源的事情；
+      - 不同的任务有很多可以公用的知识，比如从图1中的(a)图可以看出：关系抽取需要用到命名实体识别的结果，事件抽取中的论元也是实体，而**现在存在大量的针对特定任务的模型无法做到共享这些实体知识**。
+      - 信息抽取的数据标注是一件极其耗费时间和人力的事情，但由于任务之间的独立，需要对每一个任务都标注数据。
+  - 论文贡献
+    - 设计了一种结构化抽取语言(Structural Extraction Language, SEL)，它能够将四种信息抽取任务的不同结构统一描述，使得模型的输出结构针对不同任务都是一致的。
+    - 由于模型可以做多个任务，所以需要一种方式去指导模型做指定的任务，因此作者设计了结构化模式指导器(Structural Schema Instructor, SSI)，其实这就是一种prompt。
+    - 由于模型的输出都是符合SEL语法的结构化信息，而目前常用的生成式预训练模型如T5、BART都是以生成自然语言为主，若直接采用这种预训练模型会影响到模型性能，因此作者专门针对text to structure的结构来预训练了一个大模型
 
 ###### [【关于 实体关系联合抽取】 那些的你不知道的事](https://github.com/km1994/nlp_paper_study_information_extraction/tree/master/information_extraction/ERE_study/)
 
