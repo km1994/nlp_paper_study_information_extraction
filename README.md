@@ -235,6 +235,20 @@
 
 ###### [【关于 命名实体识别】那些你不知道的事](https://github.com/km1994/nlp_paper_study_information_extraction/tree/master/information_extraction/NER_study/)
 
+
+- [【关于 kNN-NER】 那些你不知道的事](https://github.com/km1994/nlp_paper_study_information_extraction/tree/master/information_extraction/NER_study/knnNER) 
+  - 论文名称：<kNN-NER: Named Entity Recognition with Nearest Neighbor Search >
+  - 会议：
+  - 论文地址：https://arxiv.org/pdf/2203.17103.pdf
+  - 论文代码：https://github.com/ShannonAI/KNN-NER
+  - 动机：在推理阶段，加入kNN机制，以一种集成的思路来做NER，的确是一种较为简洁的方式提升识别效果。
+  - 论文方法：
+    - 在训练阶段，按正常的序列任务训练一个常规的NER模型；
+    - 在推理阶段，由常规模型预测一个分布+由kNN检索出来的一个分布，两个分布融合作为最终的预测分布，从而达到提高NER识别效果。
+  - 实验结果：
+    - kNN-NER框架在处理长尾数据（long-tail）及小样数据（few-shot）问题上，比常规的NER模型表现更好，而这也正是业务场景容易遇到的问题。
+    - 在对比的baseline下，加入kNN机制都有提升，在Weibo数据集上最高达1.23个点提升，还是很明显的。
+    - 在训练集5%的情况，kNN-NER对比常规序列模型有近2个点的提升，说明论文在小样本学习上表现更好。
 - [【关于 Label Semantics for Few Shot NER】 那些你不知道的事](https://github.com/km1994/nlp_paper_study_information_extraction/tree/master/information_extraction/NER_study/ACL2022_LabelSemanticsForFewShotNER) 【推荐理由：ACL2022 SOTA】
   - 论文名称：Label Semantics for Few Shot Named Entity Recognition
   - 会议：ACL2022
